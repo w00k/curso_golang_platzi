@@ -3,21 +3,37 @@ package main
 import "fmt"
 
 func main() {
-	//
-	helloMessage := "hello"
-	worldMessage := "world"
+	// llamamos una funcion
+	normalFunction("Hola mundo")
 
-	fmt.Println(helloMessage, worldMessage)
+	// llamamos una funcion con 3 parametos o argumentos
+	tripleArgumentos(1, 2, "hola")
 
-	nombre := "Platzi"
-	cursos := 500
-	fmt.Printf("%s tiene mas de %d cursos \n", nombre, cursos)
-	fmt.Printf("%v tiene mas de %v cursos \n", nombre, cursos) //no hay certeza del tipo de dato, por eso %v
+	// llamamos una funcion que retorna un numero
+	fmt.Println(returnValue(2))
 
-	message := fmt.Sprintf("%s tiene mas de %d cursos", nombre, cursos)
+	// invocamos una funcion que retorna 2 valores
+	value1, value2 := dolubleReturn(2)
+	fmt.Println("value1:", value1, "\nvalue2:", value2)
+
+	// invocamos la misma funcion que retorna 2 valores
+	// y solo rescatamos uno de los valores (por orden)
+	_, value := dolubleReturn(3)
+	fmt.Println(value)
+}
+
+func normalFunction(message string) {
 	fmt.Println(message)
+}
 
-	// conocer tl tipo de dato de una variable
-	fmt.Printf("helloMessage: %T \n", helloMessage)
-	fmt.Printf("helloMessage: %T \n", cursos)
+func tripleArgumentos(a, b int, c string) {
+	fmt.Println(a, b, c)
+}
+
+func returnValue(a int) int {
+	return a * 2
+}
+
+func dolubleReturn(a int) (c, d int) {
+	return a, a * 2
 }
