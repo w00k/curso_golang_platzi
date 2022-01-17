@@ -1,65 +1,32 @@
 package main
 
-import "fmt"
-
 func main() {
 
-	// area cuadrado
-	const baseCuadrado = 10
-	areaCuadrado := baseCuadrado * baseCuadrado
-	fmt.Println("area cuadrado:", areaCuadrado)
+	//numeros enteros (negativos y positivos)
+	//int = Depende del OS (32 o 64 bits)
+	//int8 = 8bits = -128 a 127
+	//int16 = 16bits = -2^15 a 2^15-1
+	//int32 = 32bits = -2^31 a 2^31-1
+	//int64 = 64bits = -2^63 a 2^63-1
 
-	x := 10
-	y := 50
+	//optimizar memoria cuando sabemos que el dato simpre va ser positivo (valores solo positivos)
+	//uint = Depende del OS (32 o 64 bits)
+	//uint8 = 8bits = 0 a 127
+	//uint16 = 16bits = 0 a 2^15-1
+	//uint32 = 32bits = 0 a 2^31-1
+	//uint64 = 64bits = 0 a 2^63-1
 
-	// suma
-	result := x + y
-	fmt.Println("suma ", result)
+	//numeros decimales
+	// float32 = 32 bits = +/- 1.18e^-38 +/- -3.4e^38
+	// float64 = 64 bits = +/- 2.23e^-308 +/- -1.8e^308
 
-	// resta
-	result = y - x
-	fmt.Println("resta ", result)
+	//textos y booleanos
+	//string = ""
+	//bool = true or false
 
-	// multiplicacion
-	result = x * y
-	fmt.Println("multiplicacion ", result)
+	//numeros complejos
+	//Complex64 = Real e Imaginario float32
+	//Complex128 = Real e Imaginario float64
+	//Ejemplo : c := 10 + 8i
 
-	// division
-	result = y / x
-	fmt.Println("division ", result)
-
-	// modulo
-	result = y % x
-	fmt.Println("modulo ", result)
-
-	// incremental
-	// x + 1
-	x++
-	fmt.Println("x incremental ", x)
-
-	// decremental
-	// x - 1
-	x--
-	fmt.Println("x decremental ", x)
-
-	// reto
-	// calcular area de un trapecio
-	var base1 = 4
-	var base2 = 10
-	var altura int = 4
-	fmt.Println("area del trapecio es ", areaTrtapecio(base1, base2, altura))
-
-	// calcular area de una circunferencia
-	var radio int = 5
-	fmt.Println("area de la circunferencia ", 5, " es ", areaCirculo(radio))
-
-}
-
-func areaTrtapecio(base1 int, base2 int, altura int) int {
-	return ((base1 + base2) * altura) / 2
-}
-
-func areaCirculo(radio int) float64 {
-	const pi float64 = 3.14
-	return pi * float64(radio) * float64(radio)
 }
