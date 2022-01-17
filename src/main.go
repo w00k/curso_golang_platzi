@@ -3,33 +3,63 @@ package main
 import "fmt"
 
 func main() {
-	// constantes
-	const pi float64 = 3.14
-	const pi2 = 3.14
-
-	fmt.Println("pi = ", pi)
-	fmt.Println("pi2 = ", pi2)
-
-	// variables
-	base := 12          //no le decimos el tipo de dato, pero si el valor
-	var altura int = 14 //definimos el tipo de dato y valor
-	var area int        //definimos el tipo de dato
-
-	fmt.Println(base, altura, area)
-
-	// zero values
-	var a int
-	var b float64
-	var c string
-	var d bool
-
-	fmt.Println("a = ", a)
-	fmt.Println("b = ", b)
-	fmt.Println("c = ", c)
-	fmt.Println("d = ", d)
 
 	// area cuadrado
 	const baseCuadrado = 10
 	areaCuadrado := baseCuadrado * baseCuadrado
 	fmt.Println("area cuadrado:", areaCuadrado)
+
+	x := 10
+	y := 50
+
+	// suma
+	result := x + y
+	fmt.Println("suma ", result)
+
+	// resta
+	result = y - x
+	fmt.Println("resta ", result)
+
+	// multiplicacion
+	result = x * y
+	fmt.Println("multiplicacion ", result)
+
+	// division
+	result = y / x
+	fmt.Println("division ", result)
+
+	// modulo
+	result = y % x
+	fmt.Println("modulo ", result)
+
+	// incremental
+	// x + 1
+	x++
+	fmt.Println("x incremental ", x)
+
+	// decremental
+	// x - 1
+	x--
+	fmt.Println("x decremental ", x)
+
+	// reto
+	// calcular area de un trapecio
+	var base1 = 4
+	var base2 = 10
+	var altura int = 4
+	fmt.Println("area del trapecio es ", areaTrtapecio(base1, base2, altura))
+
+	// calcular area de una circunferencia
+	var radio int = 5
+	fmt.Println("area de la circunferencia ", 5, " es ", areaCirculo(radio))
+
+}
+
+func areaTrtapecio(base1 int, base2 int, altura int) int {
+	return ((base1 + base2) * altura) / 2
+}
+
+func areaCirculo(radio int) float64 {
+	const pi float64 = 3.14
+	return pi * float64(radio) * float64(radio)
 }
