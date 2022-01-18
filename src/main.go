@@ -3,21 +3,26 @@ package main
 import "fmt"
 
 func main() {
-	//
-	helloMessage := "hello"
-	worldMessage := "world"
+	//for condicional
+	for i := 0; i <= 10; i++ {
+		fmt.Println(i)
+	}
 
-	fmt.Println(helloMessage, worldMessage)
+	fmt.Println(" ")
 
-	nombre := "Platzi"
-	cursos := 500
-	fmt.Printf("%s tiene mas de %d cursos \n", nombre, cursos)
-	fmt.Printf("%v tiene mas de %v cursos \n", nombre, cursos) //no hay certeza del tipo de dato, por eso %v
+	// for while
+	counter := 0
+	for counter < 10 {
+		fmt.Println(counter)
+		counter++
+	}
 
-	message := fmt.Sprintf("%s tiene mas de %d cursos", nombre, cursos)
-	fmt.Println(message)
+	fmt.Println(" ")
 
-	// conocer tl tipo de dato de una variable
-	fmt.Printf("helloMessage: %T \n", helloMessage)
-	fmt.Printf("helloMessage: %T \n", cursos)
+	// for forever
+	counterForever := 0
+	for {
+		fmt.Println(counterForever)
+		counterForever++
+	}
 }
