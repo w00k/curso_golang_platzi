@@ -1,35 +1,51 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	// array, el largo es inmutable
-	var array [4]int
-	array[0] = 1
-	array[1] = 2
+	slice := []string{"hola", "que", "tal", "123"}
 
-	fmt.Println(array)
-	fmt.Println("largo del array ", len(array))
-	fmt.Println("capacidad de la array ", cap(array))
+	// con indice
+	for i, valor := range slice {
+		fmt.Println(i, valor)
+	}
 
-	// slice, son mutables
-	slice := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	fmt.Println("")
 
-	fmt.Println(slice)
-	fmt.Println("largo del slice ", len(slice))
-	fmt.Println("capacidad del slice ", cap(slice))
+	// sin indice
+	for _, valor := range slice {
+		fmt.Println(valor)
+	}
 
-	// metodos en el slice
-	fmt.Println(slice[0])   //imprime el elemento de la posicion 0
-	fmt.Println(slice[:3])  //imprime hasta la posicion 3, posicion 3 es exclusivo
-	fmt.Println(slice[5:8]) //imprime entre la posicion 5 y 8, aca las posiciones son inclusivas
-	fmt.Println(slice[4:])  //imprime desde el elemento 4 en adelante, posicion exclusivo
+	fmt.Println("")
 
-	// agregar elementos al slice
-	slice = append(slice, 10)
-	fmt.Println(slice)
+	// solo los indices
+	for i := range slice {
+		fmt.Println(i)
+	}
 
-	newSlice := []int{11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
-	slice = append(slice, newSlice...)
-	fmt.Println(slice)
+	isPalindromom("Ama")
+	isPalindromom("esto no es palindromo")
+	isPalindromom("amor a Roma")
+}
+
+func isPalindromom(text string) {
+	var textReverse string
+
+	for i := len(text) - 1; i >= 0; i-- {
+		textReverse += string(text[i])
+	}
+
+	fmt.Println("")
+	fmt.Println("el texto inrgesado es '", text, "'")
+	fmt.Println("el texto al revez es '", textReverse, "'")
+
+	if strings.ToLower(text) == strings.ToLower(textReverse) {
+		fmt.Println("es un palindromo")
+	} else {
+		fmt.Println("no es un palindromo")
+	}
 }
