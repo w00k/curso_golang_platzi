@@ -3,36 +3,31 @@ package main
 import "fmt"
 
 func main() {
-	valor1 := 1
-	valor2 := 2
 
-	if valor1 == 1 {
-		fmt.Println("Es 1")
-	} else {
-		fmt.Println("No es 1")
+	isOdd(2)
+	isOdd(5)
+
+	fmt.Println()
+
+	// sin condicion, para multiples variables
+	value := 200
+	switch {
+	case value > 100:
+		fmt.Println("Es mayor a 100")
+	case value < 0:
+		fmt.Println("Es menor a 0")
+	default:
+		fmt.Println("No condicion")
 	}
-
-	// con AND
-	if valor1 == 1 && valor2 == 2 {
-		fmt.Println("AND Es verdad")
-	}
-
-	// con OR
-	if valor1 == 1 || valor2 == 2 {
-		fmt.Println("OR Es verdad")
-	}
-
-	// funcion que determine si un numero es par o impar
-	isPair(1)
-	isPair(2)
-	isPair(17)
-	isPair(18)
 }
 
-func isPair(number int) {
-	if number%2 == 0 {
-		fmt.Println("numero ", number, " es par")
-	} else {
-		fmt.Println("numero ", number, " es impar")
+func isOdd(number int) {
+	//asi o del otro modo, anidado ene l switch
+	//modulo := number % 2
+	switch modulo := number % 2; modulo {
+	case 0:
+		fmt.Println("false, numero ", number, " es par")
+	default:
+		fmt.Println("true, numero ", number, " es impar")
 	}
 }
