@@ -2,50 +2,32 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func main() {
-	slice := []string{"hola", "que", "tal", "123"}
+	// es mas eficiente que usar slice, usa concurrencia por lo que
+	// los valores puden no recorrerse en orden
+	m := make(map[string]int)
 
-	// con indice
-	for i, valor := range slice {
+	m["Jose"] = 14
+	m["Pepito"] = 20
+
+	fmt.Println(m)
+
+	// un valor
+	fmt.Println(m["Jose"])
+	fmt.Println(m["Pepito"])
+	fmt.Println(m["no existe"]) // es cero
+
+	//verificar si excte en el diccionario
+	value, ok := m["Pepito"]
+	fmt.Println(value, ok) // OK = true
+
+	valueNotFount, nok := m["not found"]
+	fmt.Println(valueNotFount, nok) // NOK = false
+
+	// recorrer el map
+	for i, valor := range m {
 		fmt.Println(i, valor)
-	}
-
-	fmt.Println("")
-
-	// sin indice
-	for _, valor := range slice {
-		fmt.Println(valor)
-	}
-
-	fmt.Println("")
-
-	// solo los indices
-	for i := range slice {
-		fmt.Println(i)
-	}
-
-	isPalindromom("Ama")
-	isPalindromom("esto no es palindromo")
-	isPalindromom("amor a Roma")
-}
-
-func isPalindromom(text string) {
-	var textReverse string
-
-	for i := len(text) - 1; i >= 0; i-- {
-		textReverse += string(text[i])
-	}
-
-	fmt.Println("")
-	fmt.Println("el texto inrgesado es '", text, "'")
-	fmt.Println("el texto al revez es '", textReverse, "'")
-
-	if strings.ToLower(text) == strings.ToLower(textReverse) {
-		fmt.Println("es un palindromo")
-	} else {
-		fmt.Println("no es un palindromo")
 	}
 }
