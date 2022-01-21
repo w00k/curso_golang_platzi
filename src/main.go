@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // pc es un struct para el ejemplo
 type pc struct {
@@ -11,40 +9,13 @@ type pc struct {
 	brand string
 }
 
-// ping método de struc 'pc', que imprime la marca
-func (myPc pc) ping() {
-	fmt.Println(myPc.brand, " Pong")
-}
-
-// duplicateRAM es una función que permite acceder al atributo 'ram' y multiplicarlo por 2
-// usando punteros, mejor practica
-func (myPc *pc) duclicateRAM() {
-	myPc.ram = myPc.ram * 2
+// String personaliza el output del struct retorno del objeto ps retornando una cadena como string
+func (myPc pc) String() string {
+	return fmt.Sprintf("Tengo %d GB RAM, %d GB Disco y es una %s", myPc.ram, myPc.disk, myPc.brand)
 }
 
 func main() {
-	a := 50
-	b := &a
+	myPc := pc{ram: 16, brand: "msi", disk: 200}
 
-	fmt.Println(a)  // valor
-	fmt.Println(b)  // dirección de memoria
-	fmt.Println(*b) // valor de la dirección de memoria
-
-	*b = 100 // nuevo valor a la dirección de memoria
-
-	fmt.Println(a) // valor, a y *b están apuntando a la misma dirección de memoria
-
-	myPc := pc{
-		ram:   16,
-		disk:  200,
-		brand: "msi",
-	}
-
-	fmt.Println(myPc)
-	myPc.ping()
-
-	//myPc.ram = 32 // puede ser rebundante
-
-	myPc.duclicateRAM() // convención para modificar valores de atributos
 	fmt.Println(myPc)
 }
