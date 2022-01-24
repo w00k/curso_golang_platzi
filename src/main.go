@@ -2,29 +2,23 @@ package main
 
 import (
 	"fmt"
-	"sync"
-	"time"
 )
 
-func say(text string, wg *sync.WaitGroup) {
-	defer wg.Done()
-	fmt.Println(text)
+// chanel como parametros de entrada o salida, es buena practica especificar si es de entrada o salida
+// para salida es con 'c chan <- string'
+// para entrada es con 'c <- chan string'
+func say(text string, c chan<- string) {
+	c <- text
 }
 
+// channels soporta enviar datos entre distintos goroutines.
+// goroutines son más eficientes que usar channels, pero no permiten comunicación entre otras goroutines
 func main() {
-	var wg sync.WaitGroup
+	c := make(chan string, 1) //  1 cantidad límite
 
 	fmt.Println("Hello")
 
-	wg.Add(1)
-	// concurrencia con goroutines
-	go say("world", &wg)
-	wg.Wait()
+	go say("Bye", c)
 
-	// funciones anónimas
-	go func(text string) {
-		fmt.Println(text)
-	}("adios")
-	// agrego tiempo de espera para que se imprime la goroutines
-	time.Sleep(time.Second * 1)
+	fmt.Println(<-c)
 }
