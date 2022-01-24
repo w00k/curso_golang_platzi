@@ -2,20 +2,45 @@ package main
 
 import "fmt"
 
-// pc es un struct para el ejemplo
-type pc struct {
-	ram   int
-	disk  int
-	brand string
+// interfaz que ejecuta a la función area
+type figura2D interface {
+	area() float64
 }
 
-// String personaliza el output del struct retorno del objeto ps retornando una cadena como string
-func (myPc pc) String() string {
-	return fmt.Sprintf("Tengo %d GB RAM, %d GB Disco y es una %s", myPc.ram, myPc.disk, myPc.brand)
+// cuadrado struct que contiene el lado del cuadrado
+type cuadrado struct {
+	base float64
+}
+
+// area implementación de la función de la interface
+func (c cuadrado) area() float64 {
+	return c.base * c.base
+}
+
+// rectangulo struct que contiene los lados del rectangulo
+type rectangulo struct {
+	base   float64
+	altura float64
+}
+
+// area implementación de la función de la interface
+func (r rectangulo) area() float64 {
+	return r.base * r.altura
+}
+
+func calcular(f figura2D) {
+	fmt.Println("area:", f.area())
 }
 
 func main() {
-	myPc := pc{ram: 16, brand: "msi", disk: 200}
+	myCuadrado := cuadrado{base: 2}
+	myRectangulo := rectangulo{base: 2, altura: 4}
 
-	fmt.Println(myPc)
+	// con interfaz
+	calcular(myCuadrado)
+	calcular(myRectangulo)
+
+	// lista de interfaces
+	myInterface := []interface{}{"Hola", 12, 4.90}
+	fmt.Println(myInterface...)
 }
